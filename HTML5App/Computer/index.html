@@ -5,16 +5,51 @@
 html {
     overflow: scroll;
 }
+body{
+background: #707070;
+background: -moz-linear-gradient(top, #707070 0%, #00c3ff 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#707070), color-stop(100%,#00c3ff));
+background: -webkit-linear-gradient(top, #707070 0%,#00c3ff 100%);
+background: -o-linear-gradient(top, #707070 0%,#00c3ff 100%);
+background: -ms-linear-gradient(top, #707070 0%,#00c3ff 100%);
+background: linear-gradient(to bottom, #707070 0%,#00c3ff 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#707070', endColorstr='#00c3ff',GradientType=0 );
+background-attachment:fixed;
+font-family: Arial, Helvetica, sans-serif;
+}
+td{
+background: #00ffd8;
+background: -moz-linear-gradient(left, #00ffd8 0%, #003996 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00ffd8), color-stop(100%,#003996));
+background: -webkit-linear-gradient(left, #00ffd8 0%,#003996 100%);
+background: -o-linear-gradient(left, #00ffd8 0%,#003996 100%);
+background: -ms-linear-gradient(left, #00ffd8 0%,#003996 100%);
+background: linear-gradient(to right, #00ffd8 0%,#003996 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffd8', endColorstr='#003996',GradientType=1 );
+background-attachment:fixed;
+}
+#goproversion{
+background: cyan;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+width:20;
+height:20;
+}
+#control1{
+border-style:solid;
+border-color:blue;
+width: -webkit-fit-content;
+width: -moz-fit-content;
+width: fit-content;
+height: -webkit-fit-content;
+height: -moz-fit-content;
+height: fit-content;
+}
 </style>
-	<title>HeroProApp</title>
+	<title>GoPro Control</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-	<style type="text/css">
-		/* Prevent copy paste for all elements except text fields */
-		*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
-		input, textarea  { -webkit-user-select:text; }
-		body { background-color:white; color:black }
-	</style>
     <script type='text/JavaScript'>
 			function getXhr(){
 				var xhr = null;
@@ -51,238 +86,237 @@ html {
 			}
 		</script>
 </head>
-<body style="background-color:#A9A9A9;">
+<body>
 
-	<big>HeroPro App</big>
-
-   
-                    
-                    <td>Type your GoPro Password ("goprohero" default):
-                  <td><input required="required" placeholder="goprohero" id="wifiPassword"
+	<h1 align="center">GoPro Control</h1>
+<p></p>
+                    Type your GoPro Password ("goprohero" default):
+                  <input required="required" placeholder="goprohero" id="wifiPassword"
               type="password" class="password" input autocomplete="on" /><button>Set</button>
 				   
+
+<p></p>
  
-                        <br><td><button onclick="command('bacpac','PW','%01')">Turn GoPro ON</button>
+                       <div id="control1"> <br><button id="goproon" onclick="command('bacpac','PW','%01')">Turn GoPro ON</button>
                         &nbsp;<button id="recordtrigger"  onclick="command('bacpac','SH','%01')">Fire!</button>
  
                         &nbsp;<button id="stoptrigger" onclick="command('bacpac','SH','%00')">Stop </button>
- 
-                     
+
                   
                       &nbsp;<button onclick="command('bacpac','PW','%00')">
                         Turn GoPro OFF
                       </button>
                       
-                      <td>Mode
+                      &nbsp;Mode
                       &nbsp;<button onclick="command('camera','CM','%00')">Video</button>
                       &nbsp;<button onclick="command('camera','CM','%01')">Photo</button>
                       &nbsp;<button onclick="command('camera','CM','%02')">Burst</button>
                       &nbsp;<button onclick="command('camera','CM','%03')">Timelapse</button>
                       &nbsp;<button onclick="command('camera','CM','%04')">Timer (HERO2)</button> &nbsp;<button onclick="command('camera','CM','%05')">Play (HDMI)</button>
                     
-                   <td>Preview:
+                  &nbsp; Preview:
                     &nbsp;<button onclick="command('camera','PV','%02')">On</button>
-          &nbsp;<button onclick="command('camera','PV','%00')">Off</button>                   
+          &nbsp;<button onclick="command('camera','PV','%00')">Off</button>   </div>                
       
 <hr>
 <table>
-<tr style="background-color:#DCDCDC;"><td>Video resolution HERO3+Black</td>
-  <td><button onclick="command('camera','VV','%06')">4K</button>
-  <td><button onclick="command('camera','VV','%08')">4K 17:9</button>
-  <td><button onclick="command('camera','FS','%01')">4K 15FPS</button>
-  <td><button onclick="command('camera','FS','%00')">4K 12FPS</button>
-  <td><button onclick="command('camera','VV','%07')">2K</button>
-  <td><button onclick="command('camera','VV','%05')">2.7k</button>
-  <td><button onclick="command('camera','FS','%02')">2.7k 24FPS</button>
-  <td><button onclick="command('camera','FS','%04')">2.7k 30FPS</button>
-  <td><button onclick="command('camera','VV','%04')">1440p</button>
-  <td><button onclick="command('camera','FS','%05')">1440 48FPS</button>
-  <td><button onclick="command('camera','VV','%09')">1080 SuperView</button>
-  <td><button onclick="command('camera','VV','%03')">1080</button>
-  <td><button onclick="command('camera','VV','%02)">960p</button>
-  <td><button onclick="command('camera','VV','%0a')">720 SuperView</button>
-  <td><button onclick="command('camera','VV','%01')">720p</button></td></tr>
-<tr style="background-color:#DCDCDC;"><td>Auto Low Light HERO3+ Black
-<td><button onclick="command('camera','LW','%01')">ON</button>
-<td><button onclick="command('camera','LW','%00')">OFF</button></td></tr>     
-<tr style="background-color:#DCDCDC;"><td>Video Resolution Black Ed:
-<td><button onclick="command('camera','VV','%08')">4KCin12FPS</button>
-<td><button onclick="command('camera','VV','%06')">4K15FPS</button>
-<td><button onclick="command('camera','VV','%07')">2.7kCin24FPS</button>
-<td><button onclick="command('camera','VV','%05')">2.7k30FPS</button>
-<td><button onclick="command('camera','VV','%04')">1440p48FPS</button>
-<td><button onclick="command('camera','VV','%03')">1080 60FPS</button>
-<td><button onclick="command('camera','VR','%05')">1080 30FPS</button>
-<tr style="background-color:#DCDCDC;"><td><button onclick="command('camera','VR','%06')">960 48FPS</button>
-<td><button onclick="command('camera','VV','%02')">960 100FPS</button>
-<td><button onclick="command('camera','VV','%01')">720 120FPS</button>
-<td><button onclick="command('camera','VV','%00')">WVGA 240FPS</button></td></tr>
+<tr><td>Video resolution HERO3+Black</td><td><select><option selected="selected">SELECT</option>
+  <option onclick="command('camera','VV','%06')">4K</option>
+  <option onclick="command('camera','VV','%08')">4K 17:9</option>
+  <option onclick="command('camera','FS','%01')">4K 15FPS</option>
+  <option onclick="command('camera','FS','%00')">4K 12FPS</option>
+  <option onclick="command('camera','VV','%07')">2K</option>
+  <option onclick="command('camera','VV','%05')">2.7k</option>
+  <option onclick="command('camera','FS','%02')">2.7k 24FPS</option>
+  <option onclick="command('camera','FS','%04')">2.7k 30FPS</option>
+  <option onclick="command('camera','VV','%04')">1440p</option>
+  <option onclick="command('camera','FS','%05')">1440 48FPS</option>
+  <option onclick="command('camera','VV','%09')">1080 SuperView</option>
+  <option onclick="command('camera','VV','%03')">1080</option>
+  <option onclick="command('camera','VV','%02)">960p</option>
+  <option onclick="command('camera','VV','%0a')">720 SuperView</option>
+  <option onclick="command('camera','VV','%01')">720p</option></select></td></tr>
+<tr><td>Auto Low Light HERO3+ Black</td><td><select><option selected="selected">SELECT</option>
+<option onclick="command('camera','LW','%01')">ON</option>
+<option onclick="command('camera','LW','%00')">OFF</option></select></td></tr>     
+<tr><td>Video Resolution HERO3 Black:</td><td><select><option selected="selected">SELECT</option>
+<option onclick="command('camera','VV','%08')">4KCin12FPS</option>
+<option onclick="command('camera','VV','%06')">4K15FPS</option>
+<option onclick="command('camera','VV','%07')">2.7kCin24FPS</option>
+<option onclick="command('camera','VV','%05')">2.7k30FPS</option>
+<option onclick="command('camera','VV','%04')">1440p48FPS</option>
+<option onclick="command('camera','VV','%03')">1080 60FPS</option>
+<option onclick="command('camera','VR','%05')">1080 30FPS</option>
+<option onclick="command('camera','VR','%06')">960 48FPS</option>
+<option onclick="command('camera','VV','%02')">960 100FPS</option>
+<option onclick="command('camera','VV','%01')">720 120FPS</option>
+<option onclick="command('camera','VV','%00')">WVGA 240FPS</option></select></td></tr>
 
-<tr style="background-color:#DCDCDC;"><td>Video resolution HERO2 and HERO3 Silver
-        <td><button onclick="command('camera','VR','%06')">1080 30FPS</button>
-        <td><button onclick="command('camera','VR','%05')">960 48FPS</button>
-        <td><button onclick="command('camera','VR','%04')">960 30FPS</button>
+<tr><td>Video resolution HERO2 and HERO3 Silver</td><td><select><option selected="selected">SELECT</option>
+<option onclick="command('camera','VR','%06')">1080 30FPS</option>
+<option onclick="command('camera','VR','%05')">960 48FPS</option>
+<option onclick="command('camera','VR','%04')">960 30FPS</option>
         
-        <td><button onclick="command('camera','VR','%03')">720 60FPS</button>
-        <td><button onclick="command('camera','VR','%02')">720 30FPS</button>
-        <td><button onclick="command('camera','VR','%01')">WVGA 120FPS</button>
-        <td><button onclick="command('camera','VR','%00')">WVGA 60FPS</button></td></tr>
-<tr style="background-color:#DCDCDC;"><td>Video Protune resolutions Black ed: ONLY IF PROTUNE ON
-<td><button onclick="command('camera','PT','%01')">Protune ON</button>
-<td><button onclick="command('camera','VV','%00')">720 120T</button>
-<td><button onclick="command('camera','VV','%02')">960 100T</button>
-<td><button onclick="command('camera','VV','%03')">1080 60T</button>
-
-<tr style="background-color:#DCDCDC;"><td><button onclick="command('camera','VV','%04')">1440 48T</button>
-<td><button onclick="command('camera','VV','%05')">2.7k 30T</button>
-<td><button onclick="command('camera','VV','%07')">2.7kCin 24T</button>
-<td><button onclick="command('camera','VV','%06')">4k 15T</button>
-<td><button onclick="command('camera','VV','%08')">4kCin 12T</button></td></tr>
+<option onclick="command('camera','VR','%03')">720 60FPS</option>
+<option onclick="command('camera','VR','%02')">720 30FPS</option>
+<option onclick="command('camera','VR','%01')">WVGA 120FPS</option>
+<option onclick="command('camera','VR','%00')">WVGA 60FPS</option></select></td></tr>
+<tr><td>Video Protune resolutions Black ed: ONLY IF PROTUNE ON</td><td><select><option selected="selected">SELECT</option>
+<option onclick="command('camera','PT','%01')">Protune ON</option>
+<option onclick="command('camera','VV','%00')">720 120T</option>
+<option onclick="command('camera','VV','%02')">960 100T</option>
+<option onclick="command('camera','VV','%03')">1080 60T</option>
+<option onclick="command('camera','VV','%04')">1440 48T</option>
+<option onclick="command('camera','VV','%05')">2.7k 30T</option>
+<option onclick="command('camera','VV','%07')">2.7kCin 24T</option>
+<option onclick="command('camera','VV','%06')">4k 15T</option>
+<option onclick="command('camera','VV','%08')">4kCin 12T</option></select></td></tr>
 
                 
-        <tr style="background-color:#DCDCDC;"><td>Video Protune resolutions HERO2 and HERO3 Silver
-        <td><button onclick="command('camera','VR','%09')">960 60T</button>
-        <td><button onclick="command('camera','VR','%11')">1080 25T</button>
-        <td><button onclick="command('camera','VR','%08')">1080 24T</button>
-        <td><button onclick="command('camera','VR','%09')">1080 60T</button></td></tr>        
+        <tr><td>Video Protune resolutions HERO2 and HERO3 Silver</td><td><select><option selected="selected">SELECT</option>
+        <option onclick="command('camera','VR','%09')">960 60T</option>
+        <option onclick="command('camera','VR','%11')">1080 25T</option>
+        <option onclick="command('camera','VR','%08')">1080 24T</option>
+        <option onclick="command('camera','VR','%09')">1080 60T</option></select></td></tr>        
 
-                        <tr style="background-color:#DCDCDC;"><td>White Balance (HERO3) Protune ON ONLY:
+                        <tr><td>White Balance (HERO3) Protune ON ONLY:</td><td><select><option selected="selected">SELECT</option>
 
-                    <td><button onclick="command('camera','PT','%01')">Protune ON</button>
+                    <option onclick="command('camera','PT','%01')">Protune ON</option>
 
-                  <td><button onclick="command('camera','WB','%00')">AUTO</button>
-                  <td><button onclick="command('camera','WB','%01')">3000k</button>
-                    <td><button onclick="command('camera','WB','%02')">5500k</button>
-                    <td><button onclick="command('camera','WB','%03')">6500k</button>
-                    <td><button onclick="command('camera','WB','%04')">CAM RAW</button></td></tr>
+                  <option onclick="command('camera','WB','%00')">AUTO</option>
+                  <option onclick="command('camera','WB','%01')">3000k</option>
+                    <option onclick="command('camera','WB','%02')">5500k</option>
+                    <option onclick="command('camera','WB','%03')">6500k</option>
+                    <option onclick="command('camera','WB','%04')">CAM RAW</option></select></td></tr>
                         
-                        <tr style="background-color:#DCDCDC;"><td>Auto Low Light (HERO3+Black)
-                        <td><button onclick="command('camera','LW','%00')">OFF</button>
-        <td><button onclick="command('camera','LW','%01')">ON</button></td></tr>
+                        <tr><td>Auto Low Light (HERO3+Black)</td><td><select><option selected="selected">SELECT</option>
+                        <option onclick="command('camera','LW','%00')">OFF</option>
+        <option onclick="command('camera','LW','%01')">ON</option></select></td></tr>
 
-				  <tr style="background-color:#DCDCDC;"><td>Orientation:
+				  <tr><td>Orientation:</td><td><select><option selected="selected">SELECT</option>
 
-                    <td><button onclick="command('camera','UP','%00')">Up</button>
-					<td><button onclick="command('camera','UP','%01')">Down</button></td></tr>
+                    <option onclick="command('camera','UP','%00')">Up</option>
+					<option onclick="command('camera','UP','%01')">Down</option></select></td></tr>
 
 
 
-				  <tr style="background-color:#DCDCDC;"><td>FOV:
+				  <tr><td>FOV:</td><td><select><option selected="selected">SELECT</option>
 
-                    <td><button onclick="command('camera','FV','%00')">wide</button>
-					<td><button onclick="command('camera','FV','%01')">medium</button>
-					<td><button onclick="command('camera','FV','%02')">narrow</button></td></tr>
-					<tr style="background-color:#DCDCDC;"><td>Photo Definition HERO2 / HERO3 Silver:
+                    <option onclick="command('camera','FV','%00')">wide</option>
+					<option onclick="command('camera','FV','%01')">medium</option>
+					<option onclick="command('camera','FV','%02')">narrow</option></select></td></tr>
+					<tr><td>Photo Definition HERO2 / HERO3 Silver:</td><td><select><option selected="selected">SELECT</option>
 
-                    <td><button onclick="command('camera','PR','%00')">11mp wide</button>
-					<td><button onclick="command('camera','PR','%01')">8mp medium</button>
-					<td><button onclick="command('camera','PR','%02')">5mp wide</button>
-					<td><button onclick="command('camera','PR','%03')">5mp medium</button></td></tr>
+                    <option onclick="command('camera','PR','%00')">11mp wide</option>
+					<option onclick="command('camera','PR','%01')">8mp medium</option>
+					<option onclick="command('camera','PR','%02')">5mp wide</option>
+					<option onclick="command('camera','PR','%03')">5mp medium</option></select></td></tr>
                     
-                    <tr style="background-color:#DCDCDC;"><td>Photo Definition HERO3 Black:
+                    <tr><td>Photo Definition HERO3 Black:</td><td><select><option selected="selected">SELECT</option>
                     
-                    <td><button onclick="command('camera','PR','%05')">12mp wide</button>
-					<td><button onclick="command('camera','PR','%06')">7mp medium</button>
-					<td><button onclick="command('camera','PR','%04')">7mp wide</button>
-					<td><button onclick="command('camera','PR','%03')">5mp medium</button></td></tr>
+                    <option onclick="command('camera','PR','%05')">12mp wide</option>
+					<option onclick="command('camera','PR','%06')">7mp medium</option>
+					<option onclick="command('camera','PR','%04')">7mp wide</option>
+					<option onclick="command('camera','PR','%03')">5mp medium</option></select></td></tr>
                     
                     
-					<tr style="background-color:#DCDCDC;"><td>Timelapse Interval:
+					<tr><td>Timelapse Interval:</td><td><select><option selected="selected">SELECT</option>
 
-                    <td><button onclick="command('camera','TI','%00')">0,5sec</button>
-					<td><button onclick="command('camera','TI','%01')">1sec</button>
-					<td><button onclick="command('camera','TI','%02')">2sec</button>
-					<td><button onclick="command('camera','TI','%05')">5sec</button>
-					<td><button onclick="command('camera','TI','%0a')">10sec</button>
-					<td><button onclick="command('camera','TI','%1e')">30sec</button>
-					<td><button onclick="command('camera','TI','%3c')">60sec</button></td></tr>
-					<tr style="background-color:#DCDCDC;"><td>Volume:
+                    <option onclick="command('camera','TI','%00')">0,5sec</option>
+					<option onclick="command('camera','TI','%01')">1sec</option>
+					<option onclick="command('camera','TI','%02')">2sec</option>
+					<option onclick="command('camera','TI','%05')">5sec</option>
+					<option onclick="command('camera','TI','%0a')">10sec</option>
+					<option onclick="command('camera','TI','%1e')">30sec</option>
+					<option onclick="command('camera','TI','%3c')">60sec</option></select></td></tr>
+					<tr><td>Volume:</td><td><select><option selected="selected">SELECT</option>
 
-                    <td><button onclick="command('camera','BS','%00')">0%</button>
-					<td><button onclick="command('camera','BS','%01')">70%</button>
-					<td><button onclick="command('camera','BS','%02')">100%</button></td></tr>
+                    <option onclick="command('camera','BS','%00')">0%</option>
+					<option onclick="command('camera','BS','%01')">70%</option>
+					<option onclick="command('camera','BS','%02')">100%</option></select></td></tr>
 
-                        <tr style="background-color:#DCDCDC;"><td>Loop video (HERO3):
+                        <tr><td>Loop video (HERO3):</td><td><select><option selected="selected">SELECT</option>
                         
-                        <td><button onclick="command('camera','LO','%00')">OFF</button>
-                        <td><button onclick="command('camera','LO','%01')">5Min</button>
-                        <td><button onclick="command('camera','LO','%02')">20Min</button>
-                        <td><button onclick="command('camera','LO','%03')">60Min</button>
-                        <td><button onclick="command('camera','LO','%04')">MAX</button></td></tr>
+                        <option onclick="command('camera','LO','%00')">OFF</option>
+                        <option onclick="command('camera','LO','%01')">5Min</option>
+                        <option onclick="command('camera','LO','%02')">20Min</option>
+                        <option onclick="command('camera','LO','%03')">60Min</option>
+                        <option onclick="command('camera','LO','%04')">MAX</option></select></td></tr>
                         
-                        <tr style="background-color:#DCDCDC;"><td>Protune:
+                        <tr><td>Protune:</td><td><select><option selected="selected">SELECT</option>
                         
-                        <td><button onclick="command('camera','PT','%00')">OFF</button>
-                        <td><button onclick="command('camera','PT','%01')">On</button></td></tr>
+                        <option onclick="command('camera','PT','%00')">OFF</option>
+                        <option onclick="command('camera','PT','%01')">On</option></select></td></tr>
                         
-                        <tr style="background-color:#DCDCDC;"><td>LEDs:
+                        <tr><td>LEDs:</td><td><select><option selected="selected">SELECT</option>
                         
-                        <td><button onclick="command('camera','LB','%00')">No leds</button>
-                        <td><button onclick="command('camera','LB','%01')">2 Leds</button>
-                        <td><button onclick="command('camera','LB','%02')">4 Leds</button></td></tr>
+                        <option onclick="command('camera','LB','%00')">No leds</option>
+                        <option onclick="command('camera','LB','%01')">2 Leds</option>
+                        <option onclick="command('camera','LB','%02')">4 Leds</option></select></td></tr>
                         
-                        <tr style="background-color:#DCDCDC;"><td>Spot meter:
+                        <tr><td>Spot meter:</td><td><select><option selected="selected">SELECT</option>
                         
-                        <td><button onclick="command('camera','EX','%00')">Off</button>
-                        <td><button onclick="command('camera','EX','%01')">ON </button></td></tr>
+                        <option onclick="command('camera','EX','%00')">Off</option>
+                        <option onclick="command('camera','EX','%01')">ON </option></select></td></tr>
                        
-                       <tr style="background-color:#DCDCDC;"><td>One Button Mode:
+                       <tr><td>One Button Mode:</td><td><select><option selected="selected">SELECT</option>
                        
-                       <td><button onclick="command('camera','OB','%00')">Off</button>
-                       <td><button onclick="command('camera','OB','%01')">ON </button></td></tr>
+                       <option onclick="command('camera','OB','%00')">Off</option>
+                       <option onclick="command('camera','OB','%01')">ON </option></select></td></tr>
                        
-                       <tr style="background-color:#DCDCDC;"><td>Autopower off:
+                       <tr><td>Autopower off:</td><td><select><option selected="selected">SELECT</option>
                        
-                       <td><button onclick="command('camera','AO','%00')">Never</button>
-                       <td><button onclick="command('camera','AO','%01')">60s</button>
-                       <td><button onclick="command('camera','AO','%02')">120s </button>
-                       <td><button onclick="command('camera','AO','%03')">300s </button></td></tr>
+                       <option onclick="command('camera','AO','%00')">Never</option>
+                       <option onclick="command('camera','AO','%01')">60s</option>
+                       <option onclick="command('camera','AO','%02')">120s </option>
+                       <option onclick="command('camera','AO','%03')">300s </option></select></td></tr>
                        
-                       <tr style="background-color:#DCDCDC;"><td>Default mode:
+                       <tr><td>Default mode:</td><td><select><option selected="selected">SELECT</option>
                        
-                       <td><button onclick="command('camera','DM','%00')">Video</button>
-                       <td><button onclick="command('camera','DM','%01')">Photo</button>
-                       <td><button onclick="command('camera','DM','%02')">Burst </button>
-                       <td><button onclick="command('camera','DM','%03')">Timelapse </button></td></tr>
+                       <option onclick="command('camera','DM','%00')">Video</option>
+                       <option onclick="command('camera','DM','%01')">Photo</option>
+                       <option onclick="command('camera','DM','%02')">Burst </option>
+                       <option onclick="command('camera','DM','%03')">Timelapse </option></select></td></tr>
                        
-                       <tr style="background-color:#DCDCDC;"><td>Onscreen display:
+                       <tr><td>Onscreen display:</td><td><select><option selected="selected">SELECT</option>
                        
-                       <td><button onclick="command('camera','OS','%00')">Off</button>
-                       <td><button onclick="command('camera','OS','%01')">On</button></td></tr>
+                       <option onclick="command('camera','OS','%00')">Off</option>
+                       <option onclick="command('camera','OS','%01')">On</option></select></td></tr>
                        
-                       <tr style="background-color:#DCDCDC;"><td>Locate:
+                       <tr><td>Locate:</td><td><select><option selected="selected">SELECT</option>
                        
-                       <td><button onclick="command('camera','LL','%00')">Stop</button>
-                       <td><button onclick="command('camera','LL','%01')">Start</button></td></tr>
+                       <option onclick="command('camera','LL','%00')">Stop</option>
+                       <option onclick="command('camera','LL','%01')">Start</option></select></td></tr>
                        
-                       <tr style="background-color:#DCDCDC;"><td>Video Mode:
+                       <tr><td>Video Mode:</td><td><select><option selected="selected">SELECT</option>
                        
-                       <td><button onclick="command('camera','VM','%00')">NTSC</button>
-                       <td><button onclick="command('camera','VM','%01')">PAL</button></td></tr>
+                       <option onclick="command('camera','VM','%00')">NTSC</option>
+                       <option onclick="command('camera','VM','%01')">PAL</option></select></td></tr>
                        
-                        <tr style="background-color:#DCDCDC;"><td>Continuous Shot (HERO3):
+                        <tr><td>Continuous Shot (HERO3):</td><td><select><option selected="selected">SELECT</option>
                     
-  <td><button onclick="command('camera','CS','%00')">Single</button>
-   <td><button onclick="command('camera','CS','%03')">3SPS</button>
-    <td><button onclick="command('camera','CS','%05')">5SPS</button>
-    <td> <button onclick="command('camera','CS','%0a')">10SPS</button></td></tr>
-                    <tr style="background-color:#DCDCDC;"><td>Burst Rate (Black Ed):
+  <option onclick="command('camera','CS','%00')">Single</option>
+   <option onclick="command('camera','CS','%03')">3SPS</option>
+    <option onclick="command('camera','CS','%05')">5SPS</option>
+    <option onclick="command('camera','CS','%0a')">10SPS</option></select></td></tr>
+                    <tr><td>Burst Rate (Black Ed):</td><td><select><option selected="selected">SELECT</option>
                     
-                      <td><button onclick="command('camera','BU','%00')">3/1s</button>
-                  <td><button onclick="command('camera','BU','%02')">10/1s</button>
-                  <td><button onclick="command('camera','BU','%03')">10/2s</button>
-                  <td><button onclick="command('camera','BU','%04')">30/1s</button>
-                  <td><button onclick="command('camera','BU','%05')">30/2s</button>
-                      <td><button onclick="command('camera','BU','%06')">30/3s</button></td></tr>
+                      <option onclick="command('camera','BU','%00')">3/1s</option>
+                  <option onclick="command('camera','BU','%02')">10/1s</option>
+                  <option onclick="command('camera','BU','%03')">10/2s</option>
+                  <option onclick="command('camera','BU','%04')">30/1s</option>
+                  <option onclick="command('camera','BU','%05')">30/2s</option>
+                      <option onclick="command('camera','BU','%06')">30/3s</option></select></td></tr>
 
-                      <tr style="background-color:#DCDCDC;"><td>Delete files
+                      <tr><td>Delete files</td><td><select><option selected="selected">SELECT</option>
                       
-                     <td><button onclick="command('camera','DL','')">Delete Last File</button><td>
-                    <button onclick="command('camera','DA',')">Delete All </button></td></tr>
+                     <option onclick="command('camera','DL','')">Delete Last File</option>
+                    <option onclick="command('camera','DA',')">Delete All </option></select></td></tr>
                       
 
 </table>
-					   
+<div id="goproversion"><iframe src="http://10.5.5.9:8080/videos/MISC/version.txt" width="100%" height="100%"></iframe></div>			   
      
 </body>
+
 </html>
